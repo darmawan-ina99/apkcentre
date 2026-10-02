@@ -156,3 +156,47 @@ body { font-family: "Segoe UI", Roboto, Arial, sans-serif; background: var(--bg)
   .main-nav { order: 3; width: 100%; justify-content: space-between; }
   .top-row .dl-btn { padding: 7px 12px; }
 }
+
+/* UPLOAD */
+.upload-card { background: #fff; border-radius: var(--radius); box-shadow: var(--shadow); padding: 22px; }
+.dropzone {
+  border: 2.5px dashed #b8e9cd; border-radius: 12px; padding: 28px 16px;
+  text-align: center; cursor: pointer; transition: all 0.15s; background: #f7fff9;
+}
+.dropzone:hover, .dropzone.drag { border-color: var(--green); background: #eafff3; }
+.dz-title { font-weight: 700; margin-bottom: 4px; }
+.dz-hint { font-size: 13px; color: var(--muted); }
+.file-info {
+  margin-top: 12px; background: #f2fff8; border: 1px solid var(--green);
+  border-radius: 10px; padding: 10px 14px; font-size: 14px; font-weight: 600;
+}
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 14px; }
+.form-grid input, .form-grid select, .upload-card textarea {
+  border: 1.5px solid #dfe2ea; border-radius: 10px; padding: 10px 12px;
+  font-size: 14px; outline: none; font-family: inherit; width: 100%;
+}
+.form-grid input:focus, .form-grid select:focus, .upload-card textarea:focus { border-color: var(--green); }
+.upload-card textarea { margin-top: 10px; resize: vertical; }
+.tos { display: flex; gap: 8px; align-items: center; margin: 14px 0 12px; font-size: 13.5px; color: var(--muted); }
+.upload-btn {
+  width: 100%; background: var(--green); color: #fff; border: none; border-radius: 10px;
+  padding: 13px; font-size: 16px; font-weight: 700; cursor: pointer; transition: background 0.15s;
+}
+.upload-btn:hover:not(:disabled) { background: var(--green-dark); }
+.upload-btn:disabled { background: #b9c4bd; cursor: not-allowed; }
+.progress { position: relative; height: 26px; background: #eef1f5; border-radius: 8px; margin-top: 12px; overflow: hidden; }
+.progress-bar { height: 100%; width: 0%; background: linear-gradient(90deg, var(--green), #6ee7a8); transition: width 0.2s; }
+.progress span {
+  position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+  font-size: 12.5px; font-weight: 700; color: #20222a;
+}
+.upload-status { margin-top: 10px; font-size: 14px; font-weight: 600; min-height: 20px; }
+.upload-status.ok { color: var(--green-dark); }
+.upload-status.err { color: #d63031; }
+.dl-link {
+  display: inline-block; margin-top: 8px; background: var(--green); color: #fff;
+  padding: 7px 16px; border-radius: 8px; font-size: 12.5px; font-weight: 700;
+  text-decoration: none;
+}
+.dl-link:hover { background: var(--green-dark); }
+@media (max-width: 640px) { .form-grid { grid-template-columns: 1fr; } }

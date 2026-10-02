@@ -23,6 +23,7 @@
       <a href="#games" class="nav-link">Game</a>
       <a href="#apps" class="nav-link">Aplikasi</a>
       <a href="#categories" class="nav-link">Kategori</a>
+      <a href="#upload" class="nav-link">Upload</a>
       <a href="#top" class="nav-link">Top</a>
     </nav>
   </div>
@@ -69,6 +70,42 @@
       <h2>🏆 Top Downloads Minggu Ini</h2>
     </div>
     <div class="top-list" id="top-list"></div>
+  </section>
+
+  <section id="upload">
+    <div class="section-head">
+      <h2>📤 Upload APK Kamu</h2>
+    </div>
+    <div class="upload-card">
+      <div class="dropzone" id="dropzone">
+        <input type="file" id="apk-file" accept=".apk,application/vnd.android.package-archive" hidden>
+        <p class="dz-title">🖱️ Klik atau seret file .apk ke sini</p>
+        <p class="dz-hint">Maks. 500 MB • hanya file .apk</p>
+      </div>
+      <div class="file-info hidden" id="file-info"></div>
+      <div class="form-grid">
+        <input type="text" id="up-nama" placeholder="Nama aplikasi *">
+        <select id="up-kategori"></select>
+        <input type="text" id="up-versi" placeholder="Versi (contoh: 1.0.2)">
+        <input type="text" id="up-uploader" placeholder="Nama kamu (opsional)">
+      </div>
+      <textarea id="up-desc" rows="3" placeholder="Deskripsi singkat (opsional)"></textarea>
+      <label class="tos"><input type="checkbox" id="up-tos"> Saya jamin file ini legal dan milik saya sendiri</label>
+      <button type="button" class="upload-btn" id="btn-upload" disabled>⬆ Upload APK</button>
+      <div class="progress hidden" id="progress">
+        <div class="progress-bar" id="progress-bar"></div>
+        <span id="progress-text">0%</span>
+      </div>
+      <div class="upload-status" id="upload-status"></div>
+    </div>
+  </section>
+
+  <section id="user-apks">
+    <div class="section-head">
+      <h2>📦 APK dari Upload User</h2>
+      <a class="see-all" href="#" onclick="loadUpl();return false;">↻ Segarkan</a>
+    </div>
+    <div class="app-grid" id="grid-uploads"></div>
   </section>
 </main>
 
