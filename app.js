@@ -262,3 +262,64 @@ async function loadUpl() {
 document.getElementById("up-kategori").innerHTML =
   '<option value="">Pilih kategori</option>' + CATEGORIES.map(c => `<option value="${c}">${c}</option>`).join("") + '<option value="Lainnya">Lainnya</option>';
 loadUpl();
+
+// ===== MENU ADMIN =====
+let adminPin = null;
+const adminModal = document.getElementById("admin-modal");
+const adminCard = document.getElementById("admin-card");
+
+async function bukaAdmin() {
+  if (adminPin) { renderAdminPanel(); adminModal.classList.add("show"); return; }
+  adminCard.innerHTML = `
+    <h3>🔐 Menu Admin</h3>
+    <p class="app-cat">Masukkan PIN untuk kelola listing APK</p>
+    <div class="pin-box"><input type="password" id="pin-input" inputmode="numeric" maxlength="8" autofocus></div>
+    <div class="admin-err" id="admin-err"></div>
+    <button class="dl-btn" onclick="loginAdmin()" style="width:100%;padding:12px;">Masuk</button>
+    <button class="modal-close" onclick="tutupAdmin()">Batal</button>`;
+  adminModal.classList.add("show");
+  const pinInput = document.getElementById("pin-input");
+  pinInput.focus();
+  pinInput.addEventListener("keydown", e => { if (e.key === "Enter") loginAdmin(); });
+}
+function tutupAdmin() { adminModal.classList.remove("show"); }
+
+async function loginAdmin() {
+  const pin = document.getElementById("pin-input").value.trim();
+  const err = document.getElementById("admin-err");
+  if (!pin) { err.textContent = "PIN kosong"; return; }
+  const r = await callApiApk("adminLogin", { pin });
+  if (!r.success) { err.textContent = "❌ " + r.message; return; }
+  adminPin = pin;
+  renderAdminPanel();
+}
+
+async function renderAdminPanel() {
+  adminCard.innerHTML = `<h3>🔐 Panel Admin</h3><p class="app-cat">Memuat daftar...</p>`;
+  const r = await callApiApk("listApk", {});
+  if (!r.success) {
+    adminCard.innerHTML = `<h3>🔐 Panel Admin</h3><p class="admin-err">❌ ${r.message}</p><button class="modal-close" onclick="tutupAdmin()">Tutup</button>`;
+    return;
+  }
+  const rows = r.files.map(f => `
+    <div class="admin-row">
+      <div class="a-info">
+        <div class="a-name">📦 ${f.nama}</div>
+        <div class="a-sub">${f.kategori} • v${f.versi} • ${f.ukuran || "-"} • oleh ${f.uploader || "Anonim"}</div>
+      </div>
+      <button class="del-btn" onclick="hapusApk('${f.id}')">Hapus</button>
+    </div>`).join("");
+  adminCard.innerHTML = `
+    <h3>🔐 Panel Admin</h3>
+    <p class="app-cat">${r.files.length} listing APK user</p>
+    <div class="admin-list">${rows || "<p style='color:var(--muted);font-size:14px;'>Belum ada listing.</p>"}</div>
+    <button class="modal-close" onclick="tutupAdmin()">Tutup</button>`;
+}
+
+async function hapusApk(id) {
+  if (!confirm("Hapus listing ini dari APKCentre?")) return;
+  const r = await callApiApk("deleteApk", { pin: adminPin, id });
+  if (r.success) { renderAdminPanel(); loadUpl(); }
+  else alert("❌ " + r.message);
+}
+adminModal.addEventListener("click", e => { if (e.target.id === "admin-modal") tutupAdmin(); });
