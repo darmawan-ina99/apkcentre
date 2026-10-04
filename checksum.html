@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Verifikasi Checksum - APKCentre</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  .cs-page{max-width:860px;margin:0 auto;padding:24px 16px 60px}
+  .cs-head{text-align:center;margin:18px 0 26px}
+  .cs-head h1{font-size:1.6rem;color:#1b1f23;margin-bottom:6px}
+  .cs-head .cs-sub{color:#5f6b74;font-size:.95rem}
+  .cs-issuer{display:inline-block;margin-top:12px;padding:10px 18px;background:#e9f9f0;border:1px solid #b6ecd0;border-radius:12px;color:#0a7a3d;font-weight:600;font-size:.92rem}
+  .cs-note{background:#fff8e6;border:1px solid #f2e3a8;border-radius:12px;padding:14px 16px;font-size:.88rem;color:#6b5d1f;margin:18px 0}
+  .cs-table{width:100%;border-collapse:collapse;background:#fff;border:1px solid #e4e9ec;border-radius:12px;overflow:hidden;font-size:.86rem}
+  .cs-table th{background:#24cc77;color:#fff;text-align:left;padding:10px 12px;font-weight:600}
+  .cs-table td{padding:12px;border-bottom:1px solid #eef2f4;vertical-align:top}
+  .cs-table tr:last-child td{border-bottom:none}
+  .cs-hash{font-family:monospace;font-size:.78rem;word-break:break-all;color:#274156;background:#f4f7f9;padding:6px 8px;border-radius:8px;display:inline-block}
+  .cs-badge-ok{display:inline-block;background:#e9f9f0;color:#0a7a3d;border-radius:20px;padding:3px 10px;font-size:.75rem;font-weight:600}
+  .cs-badge-wait{display:inline-block;background:#fff1e6;color:#b4530a;border-radius:20px;padding:3px 10px;font-size:.75rem;font-weight:600}
+  .cs-foot{margin-top:26px;text-align:center;color:#8a949c;font-size:.8rem}
+  .cs-how{background:#fff;border:1px solid #e4e9ec;border-radius:12px;padding:16px 18px;margin:20px 0;font-size:.9rem;color:#40484e}
+  .cs-how code{background:#f4f7f9;border-radius:6px;padding:2px 6px;font-size:.82rem}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="header-inner">
+    <a class="logo" href="index.html"><span class="logo-mark">A</span><span class="logo-text">APK<em>Centre</em></span></a>
+    <nav class="main-nav">
+      <a href="index.html" class="nav-link">Beranda</a>
+      <a href="#daftar" class="nav-link">Checksum</a>
+    </nav>
+  </div>
+</header>
+
+<div class="cs-page" id="daftar">
+  <div class="cs-head">
+    <h1>🔐 Verifikasi Checksum File</h1>
+    <p class="cs-sub">Sidik jari digital resmi untuk semua file yang didistribusikan APKCentre. Bandingkan hasil MD5 / SHA-256 di perangkatmu dengan daftar di bawah untuk memastikan file asli dan belum diubah siapa pun.</p>
+    <div class="cs-issuer">Diterbitkan resmi oleh: darmawanwinata (Darmawan Winata - Dharma-labs)</div>
+  </div>
+
+  <div class="cs-note">
+    ⚠️ File tanpa checksum di bawah masih tersimpan di hosting pihak ketiga (gofile.io) sehingga sidik jarinya belum bisa diterbitkan. File tersebut akan diberi checksum setelah dipindahkan ke penyimpanan resmi APKCentre (GitHub).
+  </div>
+
+  <table class="cs-table">
+    <tr><th>File</th><th>Ukuran</th><th>MD5</th><th>SHA-256</th><th>Status</th></tr>
+    <tr>
+      <td><b>TheDice_V7.0.apk</b><br><span style="color:#8a949c;font-size:.78rem">com.thedice.app - build 16</span></td>
+      <td>390 KB</td>
+      <td><span class="cs-hash">82f6d8fdfe5dfcb95c7dd81d8a3dc879</span></td>
+      <td><span class="cs-hash">ca6d23998f609eef57a02314f6fefb7ffada1c41d89536c9533f157e45510ca6</span></td>
+      <td><span class="cs-badge-ok">Terverifikasi</span></td>
+    </tr>
+    <tr>
+      <td><b>TheDice_Luxe_3D_v8.apk</b><br><span style="color:#8a949c;font-size:.78rem">com.zulboy.dice.luxe - 2.0-luxe</span></td>
+      <td>281 KB</td>
+      <td><span class="cs-hash">5429266f6c3e19a39921407b391bce4b</span></td>
+      <td><span class="cs-hash">336482254ba9b02c4d512b666f9820c2882a444bcfc55998b5349dec484e2a14</span></td>
+      <td><span class="cs-badge-ok">Terverifikasi</span></td>
+    </tr>
+    <tr>
+      <td><b>TheDice_Luxe_3D_v9.apk</b><br><span style="color:#8a949c;font-size:.78rem">hosting: gofile.io</span></td>
+      <td>271 KB</td>
+      <td>-</td>
+      <td>-</td>
+      <td><span class="cs-badge-wait">Menunggu migrasi</span></td>
+    </tr>
+    <tr>
+      <td><b>chinchiro-dice2-1.8.apk</b><br><span style="color:#8a949c;font-size:.78rem">hosting: gofile.io</span></td>
+      <td>17,0 MB</td>
+      <td>-</td>
+      <td>-</td>
+      <td><span class="cs-badge-wait">Menunggu migrasi</span></td>
+    </tr>
+    <tr>
+      <td><b>Dice+Cube+Free_1.4.apk</b><br><span style="color:#8a949c;font-size:.78rem">hosting: gofile.io</span></td>
+      <td>1,7 MB</td>
+      <td>-</td>
+      <td>-</td>
+      <td><span class="cs-badge-wait">Menunggu migrasi</span></td>
+    </tr>
+  </table>
+
+  <div class="cs-how">
+    <b>Cara memverifikasi di HP Android:</b><br><br>
+    1. Buka aplikasi file manager, cari file APK yang didownload<br>
+    2. Buka file dengan fitur "Details" atau install aplikasi pembuat checksum (contoh: <code>Hash Droid</code>)<br>
+    3. Hitung MD5 file, lalu bandingkan dengan daftar di atas<br>
+    4. Kalau cocok = file asli dari APKCentre. Kalau beda = file telah dimodifikasi orang lain, jangan diinstall
+  </div>
+
+  <p class="cs-foot">Checksum ini diterbitkan dan dijaga oleh darmawanwinata. Perubahan pada file resmi selalu diikuti update checksum di halaman ini.</p>
+</div>
+</body>
+</html>
